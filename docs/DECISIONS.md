@@ -1,5 +1,11 @@
 # 설계 결정 기록 (ADR-lite)
 
+## D-009 실제 VTP 읽기 전용 검사 — 2026-10-28
+
+- PyVista는 vtp 선택 의존성으로 격리. 순수 연결성 검사는 표준 라이브러리로 실행한다.
+- 팀 고정 fixture를 저장소 밖에서 읽고 Si cell connectivity로 열린 2D 경계를 복원한다. 실제 시각 근거가 없으면 유도 시각으로 명시하고 external_research 출처를 유지한다.
+- 지원하지 않는 성분·분기·폐곡선은 추측 변환하지 않는다. [범위와 실행 증거](VTP_INSPECTION.md).
+
 ## D-008 검증된 bundle의 고정 시각 baseline 실행 — 2026-10-28
 
 - 외부 expected fingerprint를 기준으로 train/golden/policy를 함께 검사하고, 확인한 바이트를 평가 입력으로 사용한다. 실행 중 자동 freeze는 하지 않는다.

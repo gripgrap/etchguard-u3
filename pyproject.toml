@@ -10,6 +10,9 @@ requires-python = ">=3.10"
 authors = [{name="U3 individual MVP"}]
 dependencies = []
 
+[project.optional-dependencies]
+vtp = ["pyvista>=0.44,<0.50"]
+
 [project.scripts]
 etchguard = "etchguard.cli:main"
 

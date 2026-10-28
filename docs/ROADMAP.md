@@ -12,10 +12,11 @@
 - 어댑터 구현보다 먼저 무결성 검증·평가·승격의 연결 및 recipe/time 계약을 보강한다.
 
 ## P1 — 실제 ViennaPS C1/C2 어댑터
+- [x] 고정 외부 fixture 1 recipe/4 VTP 읽기, Si 연결성 검사, 변조 사본 차단. 시각은 유도값이며 provenance는 external_research. [실행 근거](VTP_INSPECTION.md).
 - [ ] `ViennaPS==4.5.0`, `ViennaLS==5.8.5` 독립 환경 실제 import 검증
 - [ ] 팀원 `tests/fixtures/raw` 원본을 가져온다면 출처·재사용 범위 명시
 - [ ] 최소 1개 실제 recipe 생성/변환 또는 공개된 실제 fixture를 read-only로 분석
-- [ ] VTP cell connectivity 기반 순서 있는 2D polyline 복원·geometry check
+- [x] VTP cell connectivity 기반 단일 열린 2D polyline 복원·기본 geometry check (분기·다중 성분·폐곡선은 미지원)
 - [ ] 입력 설정/버전/시드/rays/격자/실제 snapshot time 증거 보존
 - [ ] 원본 SHA256 및 config fingerprint; 다른 recipe/원본으로 부정 테스트
 

@@ -1,6 +1,6 @@
 # EtchGuard
 
-> 2026-10-28 업데이트: 원본·레시피 분리·평가 시각을 검사하고 판정 근거를 기록하는 [고정 시각 baseline workflow](docs/VERIFIED_WORKFLOW.md)를 추가했습니다. Windows 테스트는 **40개 통과·권한 미지원 1개 skip**입니다. 기존 25개 테스트 기준선과 새 결과를 구분합니다.
+> 2026-10-28 업데이트: [고정 시각 baseline workflow](docs/VERIFIED_WORKFLOW.md)와 [읽기 전용 VTP 어댑터](docs/VTP_INSPECTION.md)를 추가했습니다. 선택 의존성을 설치한 Windows 환경에서 **54개 통과·권한 미지원 1개 skip**을 확인했고, 고정된 외부 fixture 4개 snapshot을 실제로 읽었습니다. 시뮬레이터 직접 실행·팀 모델 품질 검증과는 구분합니다.
 
 **식각 AI 데이터·모델 검증 및 승인 자동화 | U3 개인 개발 프로젝트**  
 *Evidence-first quality gate for semiconductor etch surrogate models*
@@ -31,7 +31,7 @@ ViennaPS / 외부 데이터 / 팀원 모델                 [현재 구현: synt
 
 | 항목 | 상태 | 정확한 의미 |
 |---|---|---|
-| 7개 레시피 필드·2D 단면·시간(초) 검사 | **구현·로컬 검증** | 내부 JSON 계약 검증; 실제 VTP 파서는 아직 없음 |
+| 7개 레시피 필드·2D 단면·시간(초) 검사 | **구현·로컬 검증** | 내부 JSON 계약 및 선택 VTP reader; 단일 열린 평면 경계만 지원 |
 | 원본 파일 집합 SHA-256 fingerprint | **구현·로컬 검증** | 추가·삭제·바이트 변경 탐지. 자기 서명된 데이터 진위 보증은 아님 |
 | 최근접 레시피 baseline, Chamfer·깊이 MAE | **구현·로컬 검증** | toy 형상에서만 평가. 학습된 신경망 아님 |
 | PASS / BLOCK(성능·무결성), champion 보존 | **구현·로컬 검증** | 예시용 게이트 임계값. 실제 제조 승인 아님 |

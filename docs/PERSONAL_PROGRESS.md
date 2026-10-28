@@ -1,5 +1,13 @@
 # 개인 개발 진행 기록
 
+## 2026-10-28 main 작업 및 VTP 검사
+
+- 사용자 요청에 따라 main 직접 반영 + 추가 검증으로 변경. PR #1은 이미 병합돼 main c31f359 동기화, 원격/로컬 feat/verified-evaluation 삭제. PR 제목도 feat: 한글 형식으로 변경했다.
+- 연결성 실패 테스트 9개 작성 → 미구현 import 실패 → 어댑터 구현 후 통과. 별도 vtp-env에서 압축 reader 포함 14개 통과.
+- PyVista 0.49.1 / VTK 9.7.1 설치 후 팀 고정 fixture 1 recipe/4 snapshots 직접 읽음. 점 수 25/47/71/95, 유도 시각 0/60/120/180초.
+- 원본/실제 생성 실행의 진위는 확정하지 않았으며 external_research 표기. 상세 fingerprint·지원 범위는 VTP_INSPECTION.md.
+- 추가 검증: vtp-env 전체 55개 중 54개 통과/Windows symlink 1개 skip. 실제 fixture 변조 사본은 BLOCK, 원본 지문은 그대로 유지됨.
+
 ## 2026-10-28 검증 루프: bundle 평가
 
 - 브랜치: feat/verified-evaluation. 작업 단위 1은 검증 workflow, 단위 2는 CLI와 evidence 기록이다.
