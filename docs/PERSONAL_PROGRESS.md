@@ -1,5 +1,11 @@
 # 개인 개발 진행 기록
 
+## 2026-10-28 README 표시 수정 및 연동 준비
+- `.github/README.md`를 docs/GITHUB_AUTOMATION.md로 이동. 커밋 `88bcff8`, GitHub readme API의 path가 README.md인 것을 확인.
+- [수정 CI 성공](https://github.com/gripgrap/etchguard-u3/actions/runs/40648008012).
+- 팀 커밋 `6a2dafd`의 raw meta/VTP 헤더, run_sim, ETL, 재료 mapping, ADR, NOTICE를 읽고 INTEGRATION_PREPARATION.md에 근거·미확인·부정 사례·완료 조건 작성.
+- pyvista/vtk/viennaps/viennals 미설치 확인. VTP 디코딩·시뮬레이션·모델 통합은 아직 실행하지 않음.
+
 ## 2026-10-28 Windows 인수
 - 오늘 작업 폴더는 임시 기준이며 팀 통합 시 이동 가능. 상세: [HANDOFF_20261028](HANDOFF_20261028.md).
 - Python 3.13.12, PYTHONPATH=src, 작업 폴더 내부 TEMP/TMP로 unittest 실행: 24개 통과, symlink 생성 권한 오류 1개.

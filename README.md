@@ -75,7 +75,7 @@ python -m etchguard.cli verify path/to/raw-run
 
 ### 실제 실행 확인 범위
 
-2026-10-28 기준 로컬 Python 3.13 환경에서 **unittest 25개 통과**, synthetic demo의 `PASS(0) / 성능 BLOCK(1) / fingerprint BLOCK(2)`, BLOCK 이후 기존 champion 보존을 확인했습니다. **GitHub Actions는 원격 실행 결과가 확인되기 전까지 미검증**입니다. 기록: [LOCAL_VERIFICATION](docs/LOCAL_VERIFICATION.md).
+2026-10-28 기준 로컬 Python 3.13 환경에서 **unittest 25개 통과**, synthetic demo의 `PASS(0) / 성능 BLOCK(1) / fingerprint BLOCK(2)`, BLOCK 이후 기존 champion 보존을 확인했습니다. **GitHub Actions에서 25개 테스트 및 demo 성공을 확인했습니다**([실행 결과](https://github.com/gripgrap/etchguard-u3/actions/runs/40647179084)). Windows의 symlink 권한 오류는 별도 환경 제한으로 남아 있습니다. 기록: [LOCAL_VERIFICATION](docs/LOCAL_VERIFICATION.md).
 
 ## 저장소 읽는 순서
 
@@ -108,6 +108,8 @@ python -m etchguard.cli verify path/to/raw-run
 - **이후 P2:** 동일한 데이터·지표를 사용하는 베이스라인 대 실제 ML 후보 비교, golden/OOD·형상 실패 검증.
 - **확장 P3:** 드리프트 후 재학습·재검증·승격/차단·롤백 증거, 팀 공통 계약과의 호환성 테스트.
 - **제외:** 실제 설비 인터락·제어, 공장 품질 인증, 물리적 정확성의 과대 해석, 무단 팀 코드 복제, 무근거 임계값 완화.
+
+다음 구현의 근거와 완료 조건은 [연동 준비 조사](docs/INTEGRATION_PREPARATION.md)에 정리했습니다.
 
 자세한 의사결정과 실패 위험은 [DECISIONS](docs/DECISIONS.md)와 [ROADMAP](docs/ROADMAP.md)을 참고하세요.
 

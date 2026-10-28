@@ -5,6 +5,8 @@
 
 ## 문서 분류
 
+최신 준비 자료: [연동 준비 조사](INTEGRATION_PREPARATION.md) · [GitHub 자동화](GITHUB_AUTOMATION.md).
+
 | 문서 | 질문 | 출처/성격 |
 |---|---|---|
 | [PROJECT_CONTEXT](PROJECT_CONTEXT.md) | U3 팀 프로젝트가 어떻게 변경되었고 개인 MVP를 왜 시작했나? | 회의/팀 노션/대화 맥락, 조사 스냅샷 |

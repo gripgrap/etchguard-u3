@@ -1,11 +1,15 @@
 # 단계별 로드맵 (시간제한이 아닌 증거 기준)
 
-## P0 — 직접 실행 가능한 검증 MVP (로컬 확인, 원격 CI 확인 전)
+## P0 — 직접 실행 가능한 검증 MVP (원격 CI 확인)
 - [x] `unittest` 전체 통과(25개, 2026-10-28 로컬), 실행 로그 보존
 - [x] synthetic demo PASS/BLOCK/integrity 각각 기대한 종료 코드 확인
 - [x] 데이터 파일 조작 시 `verify`가 실패하는 부정 테스트
 - [x] 차단 이후 `registry/current.json`이 변경되지 않는지 확인
-- [ ] 개인 GitHub repo에서 Actions 성공 확인, 첫 커밋 SHA 기록
+- [x] 개인 GitHub [CI 성공](https://github.com/gripgrap/etchguard-u3/actions/runs/40647179084), 업로드 커밋 `273c3cc`
+
+## 다음 실행 준비
+- [연동 준비 조사](INTEGRATION_PREPARATION.md): 고정된 팀 커밋의 fixture/meta/ETL/ADR 조사와 부정 테스트·완료 조건.
+- 어댑터 구현보다 먼저 무결성 검증·평가·승격의 연결 및 recipe/time 계약을 보강한다.
 
 ## P1 — 실제 ViennaPS C1/C2 어댑터
 - [ ] `ViennaPS==4.5.0`, `ViennaLS==5.8.5` 독립 환경 실제 import 검증
