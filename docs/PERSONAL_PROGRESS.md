@@ -1,5 +1,14 @@
 # 개인 개발 진행 기록
 
+## 2026-10-28 실제 시뮬레이션과 예측 파일 평가
+
+- 먼저 prediction bundle 10개 실패/성공 테스트 작성 → import 실패 → 구현 후 통과. 이후 시점별 최대 오차·부가 metadata·수치 overflow 차단을 추가.
+- 명시 시각 테스트 2개를 먼저 실패 확인한 뒤 VTP adapter에 snapshot_times_seconds/time_basis 검사를 추가.
+- Windows ViennaPS 4.5.0/ViennaLS 5.8.5 설치는 성공, import는 native DLL 오류. 요구 VTK 9.3 DLL 등 의존성을 진단했고 전역 변경 없이 WSL Ubuntu/Python 3.12.3의 별도 환경을 사용.
+- `PYTHONPATH=src ../viennaps-linux-env/bin/python examples/simulate_viennaps.py --output reports/generated/viennaps-smoke-final` 실행 성공. 2 threads/100 rays/grid .05um, 0/.5/1초의 세 snapshot 생성. 동일 설정 반복 raw fingerprint 일치.
+- 원본 변조 차단, oracle PASS(0), 0.2um 오차 주입 BLOCK(1), 시각 불일치 BLOCK(2). 초기 형상 baseline도 depth/max 기준으로 BLOCK. 승격 없음.
+- Linux 전체 70개 테스트 통과/skip 0. 수치 수렴성과 실제 학습 모델 성능은 미검증. reports/evidence의 작은 JSON/그림과 VIENNAPS_SMOKE.md에 결과·제한 보관.
+
 ## 2026-10-28 main 작업 및 VTP 검사
 
 - 사용자 요청에 따라 main 직접 반영 + 추가 검증으로 변경. PR #1은 이미 병합돼 main c31f359 동기화, 원격/로컬 feat/verified-evaluation 삭제. PR 제목도 feat: 한글 형식으로 변경했다.

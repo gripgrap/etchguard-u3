@@ -1,5 +1,13 @@
 # 설계 결정 기록 (ADR-lite)
 
+## D-010 실제 simulator→예측 파일 평가 연결 — 2026-10-28
+
+- Windows wheel DLL import 실패 후 시스템 DLL 변경 대신 별도 WSL 환경에서 ViennaPS 4.5.0/ViennaLS 5.8.5를 실행했다.
+- reference/prediction/policy 봉인 bundle의 recipe·출처 지문·시간 근거·시각을 검사한 뒤 평균/최대 오차를 평가한다. 결과는 파일 평가이며 승격 권한은 없다. 모델 artifact SHA는 제출 주장으로 구분한다.
+- 직접 관찰한 생성 실행은 실행 기록·driver/config digest와 묶는다. 외부 원본의 source_type은 자동으로 simulation으로 바꾸지 않는다.
+- explicit snapshot_times_seconds/time_basis를 지원하며 누락·비증가 시각은 차단한다. 초 단위 process duration 누적값과 callback 관측 시각은 구별한다.
+- oracle/오류 주입은 평가기 제어 검사다. 실제 모델 학습·일반화 성능, coverage/mesh/ray 수렴은 미검증. [실행 근거](VIENNAPS_SMOKE.md).
+
 ## D-009 실제 VTP 읽기 전용 검사 — 2026-10-28
 
 - PyVista는 vtp 선택 의존성으로 격리. 순수 연결성 검사는 표준 라이브러리로 실행한다.

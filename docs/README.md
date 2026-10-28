@@ -5,6 +5,8 @@
 
 ## 문서 분류
 
+최신 실증: [ViennaPS 직접 실행](VIENNAPS_SMOKE.md) · [예측 파일 평가 계약](PREDICTION_BUNDLE.md).
+
 실제 VTP 읽기 결과와 선택 어댑터: [VTP_INSPECTION](VTP_INSPECTION.md).
 
 구현된 고정 시각 baseline 경로: [VERIFIED_WORKFLOW](VERIFIED_WORKFLOW.md).

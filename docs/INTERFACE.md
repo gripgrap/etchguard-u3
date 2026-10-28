@@ -39,6 +39,8 @@
 
 ## Gate
 
+실제 원본과 예측 파일을 비교하는 `evaluate-predictions`는 [별도 bundle 계약](PREDICTION_BUNDLE.md)을 사용한다. 판정은 파일 평가 결과이며 모델 등록·승격을 수행하지 않는다.
+
 추가된 `evaluate-bundle` CLI는 기존 JSON 계약을 보존하면서 train/golden/policy를 외부 fingerprint로 검증하고 고정 최종 시각의 최근접 baseline을 평가한다. 일반 모델·checkpoint 인터페이스와는 구분한다. [입력 정책·명령·신뢰 경계](VERIFIED_WORKFLOW.md).
 - Code 0: PASS (성능 기준과 fingerprint 동시 만족)
 - Code 1: BLOCK (형상·성능·회귀 오류)

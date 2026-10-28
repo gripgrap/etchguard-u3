@@ -13,9 +13,9 @@
 
 ## P1 — 실제 ViennaPS C1/C2 어댑터
 - [x] 고정 외부 fixture 1 recipe/4 VTP 읽기, Si 연결성 검사, 변조 사본 차단. 시각은 유도값이며 provenance는 external_research. [실행 근거](VTP_INSPECTION.md).
-- [ ] `ViennaPS==4.5.0`, `ViennaLS==5.8.5` 독립 환경 실제 import 검증
+- [x] `ViennaPS==4.5.0`, `ViennaLS==5.8.5` WSL 독립 환경 import·CPU 실제 생성 및 재실행 확인. Windows native import는 DLL 문제로 실패 기록.
 - [ ] 팀원 `tests/fixtures/raw` 원본을 가져온다면 출처·재사용 범위 명시
-- [ ] 최소 1개 실제 recipe 생성/변환 또는 공개된 실제 fixture를 read-only로 분석
+- [x] 자체 드라이버로 1 recipe/3 snapshots 직접 생성→변환→prediction file 평가. 정밀 수렴성과 모델 품질은 후속.
 - [x] VTP cell connectivity 기반 단일 열린 2D polyline 복원·기본 geometry check (분기·다중 성분·폐곡선은 미지원)
 - [ ] 입력 설정/버전/시드/rays/격자/실제 snapshot time 증거 보존
 - [ ] 원본 SHA256 및 config fingerprint; 다른 recipe/원본으로 부정 테스트

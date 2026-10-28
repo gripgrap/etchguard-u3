@@ -87,7 +87,7 @@ def read_vtp(path, material_id=10):
 
 
 def inspect_run(directory, expected_fingerprint, *, material_id=10, source_revision):
-    """Read fixed source files, with derived (not observed) timestamps.
+    """Read fixed source files with explicit times, or labeled derived times.
 
     External baseline is required; no manifest or other file is written here.
     Concurrent hostile modification is outside this read-only inspection scope.
@@ -114,14 +114,25 @@ def inspect_run(directory, expected_fingerprint, *, material_id=10, source_revis
         indices.append(int(match.group(1)))
     if indices != list(range(actual_k+1)):
         raise ValueError('missing, duplicate or nonconsecutive snapshot index')
+    if 'snapshot_times_seconds' in meta:
+        times = meta['snapshot_times_seconds']
+        if (not isinstance(times, list) or len(times) != len(paths)
+                or any(type(t) not in (int,float) or not math.isfinite(t) or t < 0 for t in times)
+                or any(b <= a for a,b in zip(times,times[1:]))
+                or not isinstance(meta.get('time_basis'), str) or not meta['time_basis']):
+            raise ValueError('invalid explicit snapshot times or time basis')
+        time_basis = meta['time_basis']
+    else:
+        times = [i*step*60 for i in indices]
+        time_basis = 'snapshot_index_times_step_min; derived_not_observed'
     run = {'run_id': root.name, 'recipe': meta['params'],
            'provenance': {'source_type': 'external_research', 'version': str(meta['viennaps']),
                           'claimed_simulator': 'ViennaPS', 'source_revision': source_revision,
                           'content_fingerprint': expected_fingerprint,
-                          'time_basis': 'snapshot_index_times_step_min; derived_not_observed',
+                          'time_basis': time_basis,
                           'material_id': material_id, 'length_unit_basis': 'source_generator_declares_um'},
-           'snapshots': [{'t_seconds': i*step*60, 'points_um': read_vtp(p, material_id)}
-                         for i, p in zip(indices, paths)]}
+           'snapshots': [{'t_seconds': t, 'points_um': read_vtp(p, material_id)}
+                         for t, p in zip(times, paths)]}
     issues = validate_run(run)
     if issues:
         raise ValueError(str(issues))

@@ -104,3 +104,22 @@ class VTPReaderTests(unittest.TestCase):
     def test_missing_source_revision_rejected(self):
         with self.assertRaisesRegex(ValueError, 'source revision'):
             inspect_run(self.root, self.fp, source_revision='')
+
+    def test_explicit_times_are_preserved(self):
+        p = self.root/'meta.json'
+        meta = json.loads(p.read_text())
+        meta['snapshot_times_seconds'] = [0, .75]
+        meta['time_basis'] = 'explicit_process_durations'
+        p.write_text(json.dumps(meta))
+        run = self.inspect(manifest_for(self.root)['content_fingerprint'])
+        self.assertEqual(run['snapshots'][1]['t_seconds'], .75)
+        self.assertEqual(run['provenance']['time_basis'], 'explicit_process_durations')
+
+    def test_incomplete_explicit_times_rejected(self):
+        p = self.root/'meta.json'
+        meta = json.loads(p.read_text())
+        meta['snapshot_times_seconds'] = [0]
+        meta['time_basis'] = 'explicit_process_durations'
+        p.write_text(json.dumps(meta))
+        with self.assertRaisesRegex(ValueError, 'explicit snapshot times'):
+            self.inspect(manifest_for(self.root)['content_fingerprint'])

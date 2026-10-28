@@ -48,4 +48,6 @@ python examples/inspect_vtp.py path/to/raw-run --expected-fingerprint TRUSTED_SH
 
 ## 다음 작업
 
+추가 구현: meta.json에 snapshot_times_seconds와 비어 있지 않은 time_basis가 있으면 명시 시각을 사용하고, 개수·유한성·엄격 증가를 검사한다. 없으면 기존 derived_not_observed 경로를 유지한다. time_basis 표기는 제출 metadata의 주장이지 독립 인증이 아니다.
+
 이 원본 형식을 파일 기반 prediction bundle 계약과 연결한다. 유도 시각을 사용하는 데이터와 실제 timestamp를 가진 데이터는 동일한 것으로 합치지 않는다. 1개 recipe 검사 성공을 모델 일반화 성능이나 실제 공정 정확도 증거로 사용하지 않는다.

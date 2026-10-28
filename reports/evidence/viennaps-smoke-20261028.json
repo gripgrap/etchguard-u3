@@ -1,0 +1,132 @@
+{
+  "summary": {
+    "status": "PASS",
+    "scope": "simulator_to_evaluator_smoke_not_model_accuracy",
+    "source_fingerprint": "1849effefd9ae8540a381da4e7e31e07f41f67abb3f50718871c4fcbeb56d849",
+    "shape_change_chamfer_um": 0.03243511276399054,
+    "snapshot_points": [
+      11,
+      11,
+      11
+    ],
+    "exit_codes": {
+      "oracle": 0,
+      "fault_injection": 1,
+      "initial_shape_baseline": 1,
+      "wrong_time": 2
+    },
+    "promotion_authorized": false,
+    "simulation_wall_seconds": 2.871212750999973,
+    "coverage_convergence_verified": false,
+    "mesh_ray_convergence_verified": false,
+    "separate_process_per_interval": true,
+    "tampered_raw_blocked": true
+  },
+  "execution": {
+    "status": "SIMULATION_COMPLETE",
+    "started_utc": "2026-10-28T08:36:20.438916+00:00",
+    "python": "3.12.3",
+    "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "source_revision": "754b1c5990dffa2b1e47dcb36114e98d0aad4f98",
+    "driver_sha256": "d49c68ec73835ee8d1f6671ea87157c114e3044bad10ab72257e40627ef5ed70",
+    "config_sha256": "42d56a1cace53d0687b0459820b98e84f959a78d1edbc120e85d79004dcbd432",
+    "versions": {
+      "ViennaPS": "4.5.0",
+      "ViennaLS": "5.8.5",
+      "pyvista": "0.49.1",
+      "vtk": "9.7.1"
+    },
+    "wall_seconds": 2.871212750999973,
+    "events": [
+      {
+        "snapshot_index": 1,
+        "requested_duration_seconds": 0.5,
+        "configured_cumulative_seconds": 0.5,
+        "wall_seconds": 0.25077186400000073
+      },
+      {
+        "snapshot_index": 2,
+        "requested_duration_seconds": 0.5,
+        "configured_cumulative_seconds": 1.0,
+        "wall_seconds": 0.2948100489999774
+      }
+    ]
+  },
+  "config": {
+    "recipe": {
+      "ion_flux": 10.0,
+      "etchant_flux": 4500.0,
+      "oxygen_flux": 800.0,
+      "ion_mean_energy": 100.0,
+      "ion_exponent": 500.0,
+      "mask_width": 0.5,
+      "mask_height": 0.3
+    },
+    "grid_delta_um": 0.05,
+    "x_extent_um": 2.0,
+    "rays": 100,
+    "seed": 42,
+    "threads": 2,
+    "snapshot_times_seconds": [
+      0.0,
+      0.5,
+      1.0
+    ]
+  },
+  "repeat_raw_fingerprint_equal": true,
+  "linux_tests": {
+    "total": 70,
+    "passed": 70,
+    "skipped": 0
+  },
+  "results": {
+    "oracle": {
+      "exit_code": 0,
+      "metrics": {
+        "n": 3,
+        "chamfer_mean_um": 0.0,
+        "depth_mae_um": 0.0,
+        "max_chamfer_um": 0.0
+      },
+      "reasons": [],
+      "promotion_authorized": false
+    },
+    "fault_injection": {
+      "exit_code": 1,
+      "metrics": {
+        "n": 3,
+        "chamfer_mean_um": 0.19729153570303515,
+        "depth_mae_um": 0.20000000000000004,
+        "max_chamfer_um": 0.2
+      },
+      "reasons": [
+        "mean Chamfer exceeds policy",
+        "depth MAE exceeds policy",
+        "per-snapshot Chamfer exceeds policy"
+      ],
+      "promotion_authorized": false
+    },
+    "initial_shape_baseline": {
+      "exit_code": 1,
+      "metrics": {
+        "n": 3,
+        "chamfer_mean_um": 0.016469671321778772,
+        "depth_mae_um": 0.02445410999155685,
+        "max_chamfer_um": 0.03243511276399054
+      },
+      "reasons": [
+        "depth MAE exceeds policy",
+        "per-snapshot Chamfer exceeds policy"
+      ],
+      "promotion_authorized": false
+    },
+    "wrong_time": {
+      "exit_code": 2,
+      "metrics": {},
+      "reasons": [
+        "input: snapshot times/count mismatch"
+      ],
+      "promotion_authorized": false
+    }
+  }
+}

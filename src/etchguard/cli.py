@@ -13,6 +13,7 @@ from .model import NearestRecipeBaseline
 from .registry import Registry
 from .report import write_html
 from .workflow import run_bundle
+from .predictions import evaluate_prediction_bundle
 
 
 class DegradedModel:
@@ -85,6 +86,9 @@ def main(argv=None):
     d.add_argument("--expected-fingerprint", required=True)
     d.add_argument("--registry", required=True)
     d.add_argument("--model-id", required=True)
+    e=sub.add_parser("evaluate-predictions", help="compare sealed reference/prediction files; no promotion")
+    e.add_argument("directory")
+    e.add_argument("--expected-fingerprint", required=True)
     ns=p.parse_args(argv)
     try:
         if ns.action=="demo":return _demo(Path(ns.output))
@@ -94,6 +98,10 @@ def main(argv=None):
             result=run_bundle(ns.directory, ns.expected_fingerprint, Registry(ns.registry), ns.model_id)
             print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
             return result['decision']['exit_code']
+        if ns.action=="evaluate-predictions":
+            result=evaluate_prediction_bundle(ns.directory, ns.expected_fingerprint)
+            print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+            return result['exit_code']
     except (OSError,ValueError,IntegrityError) as exc:
         print(f"ERROR: {exc}",file=sys.stderr)
         return 2

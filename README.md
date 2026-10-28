@@ -1,11 +1,11 @@
 # EtchGuard
 
-> 2026-10-28 업데이트: [고정 시각 baseline workflow](docs/VERIFIED_WORKFLOW.md)와 [읽기 전용 VTP 어댑터](docs/VTP_INSPECTION.md)를 추가했습니다. 선택 의존성을 설치한 Windows 환경에서 **54개 통과·권한 미지원 1개 skip**을 확인했고, 고정된 외부 fixture 4개 snapshot을 실제로 읽었습니다. 시뮬레이터 직접 실행·팀 모델 품질 검증과는 구분합니다.
+> 2026-10-28 업데이트: **WSL에서 실제 ViennaPS를 실행해 생성→VTP 검사→예측 파일 평가를 연결**했습니다. Linux 선택 의존성 환경에서 **70개 테스트 모두 통과**했습니다. [실행 결과·한계](docs/VIENNAPS_SMOKE.md), [예측 파일 계약](docs/PREDICTION_BUNDLE.md). 실제 학습 모델의 일반화 정확도는 아직 검증하지 않았습니다.
 
 **식각 AI 데이터·모델 검증 및 승인 자동화 | U3 개인 개발 프로젝트**  
 *Evidence-first quality gate for semiconductor etch surrogate models*
 
-> **현재 상태: v0.1 / synthetic-fixture 기반으로 실행 검증한 독립 MVP.** 실제 ViennaPS 시뮬레이션·FNO/MeshGraphNet 학습·공정 적합성은 아직 본 저장소에서 검증하지 않았습니다. 테스트용 `PASS`는 연구용 규칙에 대한 기능 검증이며, 생산 설비 배포 승인이나 물리적 정확성 인증이 아닙니다.
+> **현재 상태: v0.1 / 합성 테스트와 실제 ViennaPS 소규모 연결 검증.** FNO/MeshGraphNet 학습·공정 적합성은 아직 본 저장소에서 검증하지 않았습니다. 테스트용 `PASS`는 연구용 규칙에 대한 기능 검증이며, 생산 설비 배포 승인이나 물리적 정확성 인증이 아닙니다.
 
 ## 30초 이해하기
 
@@ -36,7 +36,7 @@ ViennaPS / 외부 데이터 / 팀원 모델                 [현재 구현: synt
 | 최근접 레시피 baseline, Chamfer·깊이 MAE | **구현·로컬 검증** | toy 형상에서만 평가. 학습된 신경망 아님 |
 | PASS / BLOCK(성능·무결성), champion 보존 | **구현·로컬 검증** | 예시용 게이트 임계값. 실제 제조 승인 아님 |
 | HTML 요약 및 JSON 이력 | **구현·로컬 검증** | 브라우저로 결과 열람, 상호작용형 생산 대시보드 아님 |
-| 실제 ViennaPS 4.5.0 + ViennaLS 5.8.5 연동 | **미구현** | 설치·실제 원본·시간/재료/좌표 규격 검증 필요 |
+| 실제 ViennaPS 4.5.0 + ViennaLS 5.8.5 연동 | **CPU 소규모 실행 확인** | WSL에서 1 recipe/3 snapshots 생성·재료별 읽기·평가 연결. 수렴성·물리적 타당성은 미검증 |
 | 실제 FNO/MGN/MLP 모델 성능·골든셋 | **미검증** | 팀원 보고 수치를 본인 실행 결과로 표기 금지 |
 | drift → retrain → promote/rollback, 배포 | **미구현** | 독립 평가·모델 체크포인트·CI 연동이 선행돼야 함 |
 
