@@ -1,0 +1,7 @@
+{
+  "purpose": "synthetic fixture smoke test ONLY; not qualified for manufacturing or model deployment",
+  "threshold_status": "illustrative_predeclared_not_physical_acceptance",
+  "max_chamfer_um": 0.15,
+  "max_depth_mae_um": 0.15,
+  "max_regression_ratio": 1.1
+}

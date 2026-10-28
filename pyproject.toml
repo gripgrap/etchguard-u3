@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "etchguard"
+version = "0.1.0"
+description = "Evidence-first QA and release gate for semiconductor etch surrogate model pipelines"
+requires-python = ">=3.10"
+authors = [{name="U3 individual MVP"}]
+dependencies = []
+
+[project.scripts]
+etchguard = "etchguard.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
