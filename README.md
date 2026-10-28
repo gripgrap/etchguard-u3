@@ -1,6 +1,6 @@
 # EtchGuard
 
-> 2026-10-28 인수 메모: 오늘 작업 경로는 임시 위치이며, 현재 Windows 재검증 결과는 **24개 테스트 통과·1개 symlink 생성 권한 오류**입니다. 기존 작성 환경의 25개 통과 기록과 구분하며, 상세 현황과 보강 과제는 [인수 기록](docs/HANDOFF_20261028.md)을 먼저 확인하세요.
+> 2026-10-28 업데이트: 원본·레시피 분리·평가 시각을 검사하고 판정 근거를 기록하는 [고정 시각 baseline workflow](docs/VERIFIED_WORKFLOW.md)를 추가했습니다. Windows 테스트는 **40개 통과·권한 미지원 1개 skip**입니다. 기존 25개 테스트 기준선과 새 결과를 구분합니다.
 
 **식각 AI 데이터·모델 검증 및 승인 자동화 | U3 개인 개발 프로젝트**  
 *Evidence-first quality gate for semiconductor etch surrogate models*

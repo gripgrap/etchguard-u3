@@ -5,6 +5,8 @@
 
 ## 문서 분류
 
+구현된 고정 시각 baseline 경로: [VERIFIED_WORKFLOW](VERIFIED_WORKFLOW.md).
+
 최신 준비 자료: [연동 준비 조사](INTEGRATION_PREPARATION.md) · [GitHub 자동화](GITHUB_AUTOMATION.md).
 
 | 문서 | 질문 | 출처/성격 |

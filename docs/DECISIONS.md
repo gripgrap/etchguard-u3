@@ -1,5 +1,12 @@
 # 설계 결정 기록 (ADR-lite)
 
+## D-008 검증된 bundle의 고정 시각 baseline 실행 — 2026-10-28
+
+- 외부 expected fingerprint를 기준으로 train/golden/policy를 함께 검사하고, 확인한 바이트를 평가 입력으로 사용한다. 실행 중 자동 freeze는 하지 않는다.
+- recipe identity와 최종 물리 시각이 맞지 않으면 BLOCK(2). 결과 evidence를 history에 기록한 뒤 PASS일 때 champion 포인터를 갱신한다.
+- 범위는 비신경망 baseline 및 단일 writer다. 임의 checkpoint 승격, 서로 다른 평가셋의 저장 점수 비교, 동시 실행 트랜잭션은 이번에 추가하지 않는다.
+- 인터페이스와 위협 모델: [VERIFIED_WORKFLOW](VERIFIED_WORKFLOW.md).
+
 결정은 **검증된 사실 / 선택한 제안 / 보류/미확인**을 구분합니다. 변경 시 날짜, 근거, 대안, 영향, 실행 증거를 남깁니다.
 
 ## D-001 독립 EtchGuard 검증 계층 우선 개발 — 채택

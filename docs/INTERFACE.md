@@ -38,6 +38,8 @@
 - 단, 결과물과 매니페스트를 함께 바꿀 권한이 있는 공격자까지 방어하려면 신뢰 가능한 원격 저장소나 서명을 추가해야 합니다.
 
 ## Gate
+
+추가된 `evaluate-bundle` CLI는 기존 JSON 계약을 보존하면서 train/golden/policy를 외부 fingerprint로 검증하고 고정 최종 시각의 최근접 baseline을 평가한다. 일반 모델·checkpoint 인터페이스와는 구분한다. [입력 정책·명령·신뢰 경계](VERIFIED_WORKFLOW.md).
 - Code 0: PASS (성능 기준과 fingerprint 동시 만족)
 - Code 1: BLOCK (형상·성능·회귀 오류)
 - Code 2: BLOCK (golden/integrity/입력 계약 이상)

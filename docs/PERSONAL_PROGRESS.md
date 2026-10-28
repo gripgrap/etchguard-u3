@@ -1,5 +1,14 @@
 # 개인 개발 진행 기록
 
+## 2026-10-28 검증 루프: bundle 평가
+
+- 브랜치: feat/verified-evaluation. 작업 단위 1은 검증 workflow, 단위 2는 CLI와 evidence 기록이다.
+- 먼저 12개 실패/성공 계약 테스트 작성 → workflow 미구현 import 실패 확인 → 구현 후 12개 통과.
+- CLI·기록 실패·성능 차단 등 4개 추가 → CLI 미구현 실패 확인 → CLI 연결.
+- Windows Python 3.13.12, PYTHONPATH=src, TEMP/TMP=1028/review-tmp: 전체 41개 중 40개 통과/1개 skip. symlink 생성 권한 WinError 1314만 skip하며 Linux에서는 실제 차단 검사를 유지한다.
+- 기존 demo도 PASS(0)/열화 BLOCK(1)/해시 BLOCK(2)/champion 보존 재확인.
+- 실제 VTP·checkpoint 연동과 CPU 클러스터 진단은 이번 범위에 포함하지 않음.
+
 ## 2026-10-28 README 표시 수정 및 연동 준비
 - `.github/README.md`를 docs/GITHUB_AUTOMATION.md로 이동. 커밋 `88bcff8`, GitHub readme API의 path가 README.md인 것을 확인.
 - [수정 CI 성공](https://github.com/gripgrap/etchguard-u3/actions/runs/40648008012).
