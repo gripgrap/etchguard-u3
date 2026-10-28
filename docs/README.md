@@ -5,6 +5,8 @@
 
 ## 문서 분류
 
+현재 진행 상태: [현황 보고](STATUS_20261028.md) · [소형 모델 실험](LOCAL_STUDY.md).
+
 최신 실증: [ViennaPS 직접 실행](VIENNAPS_SMOKE.md) · [예측 파일 평가 계약](PREDICTION_BUNDLE.md).
 
 실제 VTP 읽기 결과와 선택 어댑터: [VTP_INSPECTION](VTP_INSPECTION.md).

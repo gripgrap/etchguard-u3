@@ -1,0 +1,19 @@
+{
+  "scope": "local_two_variable_exploratory_study_not_production_acceptance",
+  "design_seed": 20261028,
+  "n_recipes": 24,
+  "split_sizes": {"train": 16, "val": 4, "test": 4},
+  "variable_ranges": {"ion_flux": [8.0, 12.0], "ion_mean_energy": [80.0, 120.0]},
+  "fixed_recipe": {"etchant_flux": 4500.0, "oxygen_flux": 800.0, "ion_exponent": 500.0, "mask_width": 0.5, "mask_height": 0.3},
+  "numerical_profiles": [
+    {"name": "coarse", "grid_delta_um": 0.05, "rays": 100},
+    {"name": "medium", "grid_delta_um": 0.025, "rays": 300},
+    {"name": "fine", "grid_delta_um": 0.0125, "rays": 600}
+  ],
+  "pilot_anchors": [[8.0, 80.0], [10.0, 100.0], [12.0, 120.0]],
+  "pilot_acceptance": {"medium_vs_fine_chamfer_um_max": 0.01, "medium_vs_fine_depth_um_max": 0.01},
+  "simulation": {"duration_seconds": 1.0, "threads": 2, "seed": 42, "x_extent_um": 2.0, "coverage_tolerance": 0.001, "coverage_max_iterations": 100},
+  "profile_points": 64,
+  "ridge_alphas": [0.0001, 0.01, 1.0],
+  "evaluation_policy": {"max_chamfer_um": 0.01, "max_depth_mae_um": 0.01, "max_chamfer_per_snapshot_um": 0.02, "evaluation_times_seconds": [1.0]}
+}

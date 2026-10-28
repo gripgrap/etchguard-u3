@@ -1,0 +1,373 @@
+{
+  "scope": "local_two_variable_exploratory_study_not_production_acceptance",
+  "summary": {
+    "status": "EXPLORATORY_STUDY_COMPLETE",
+    "n_recipes": 24,
+    "split_sizes": {
+      "train": 16,
+      "val": 4,
+      "test": 4
+    },
+    "variables": [
+      "ion_flux",
+      "ion_mean_energy"
+    ],
+    "selected_alpha": 0.0001,
+    "pilot": [
+      {
+        "anchor": {
+          "etchant_flux": 4500.0,
+          "oxygen_flux": 800.0,
+          "ion_exponent": 500.0,
+          "mask_width": 0.5,
+          "mask_height": 0.3,
+          "ion_flux": 8.0,
+          "ion_mean_energy": 80.0
+        },
+        "coarse_vs_fine": {
+          "n": 1,
+          "chamfer_mean_um": 0.005660288979772703,
+          "depth_mae_um": 0.0012834361034251632,
+          "max_chamfer_um": 0.005660288979772703
+        },
+        "medium_vs_fine": {
+          "n": 1,
+          "chamfer_mean_um": 0.003544254706998557,
+          "depth_mae_um": 0.0001557684168906684,
+          "max_chamfer_um": 0.003544254706998557
+        }
+      },
+      {
+        "anchor": {
+          "etchant_flux": 4500.0,
+          "oxygen_flux": 800.0,
+          "ion_exponent": 500.0,
+          "mask_width": 0.5,
+          "mask_height": 0.3,
+          "ion_flux": 10.0,
+          "ion_mean_energy": 100.0
+        },
+        "coarse_vs_fine": {
+          "n": 1,
+          "chamfer_mean_um": 0.007690271154628713,
+          "depth_mae_um": 9.240849494406012e-06,
+          "max_chamfer_um": 0.007690271154628713
+        },
+        "medium_vs_fine": {
+          "n": 1,
+          "chamfer_mean_um": 0.0032351623662815535,
+          "depth_mae_um": 0.0004963461422627102,
+          "max_chamfer_um": 0.0032351623662815535
+        }
+      },
+      {
+        "anchor": {
+          "etchant_flux": 4500.0,
+          "oxygen_flux": 800.0,
+          "ion_exponent": 500.0,
+          "mask_width": 0.5,
+          "mask_height": 0.3,
+          "ion_flux": 12.0,
+          "ion_mean_energy": 120.0
+        },
+        "coarse_vs_fine": {
+          "n": 1,
+          "chamfer_mean_um": 0.010186644890605142,
+          "depth_mae_um": 0.0007385948296052547,
+          "max_chamfer_um": 0.010186644890605142
+        },
+        "medium_vs_fine": {
+          "n": 1,
+          "chamfer_mean_um": 0.003275989016990092,
+          "depth_mae_um": 0.00028626950953510033,
+          "max_chamfer_um": 0.003275989016990092
+        }
+      }
+    ],
+    "test": {
+      "ridge": {
+        "metrics": {
+          "n": 4,
+          "chamfer_mean_um": 0.001168098152962525,
+          "depth_mae_um": 4.825188551395125e-05,
+          "max_chamfer_um": 0.0029640932625635925
+        },
+        "cases": [
+          {
+            "run_id": "r020",
+            "exit_code": 0,
+            "metrics": {
+              "n": 1,
+              "chamfer_mean_um": 0.0011287572561195969,
+              "depth_mae_um": 2.1595609442773278e-05,
+              "max_chamfer_um": 0.0011287572561195969
+            },
+            "reasons": []
+          },
+          {
+            "run_id": "r021",
+            "exit_code": 0,
+            "metrics": {
+              "n": 1,
+              "chamfer_mean_um": 0.0029640932625635925,
+              "depth_mae_um": 2.9288344244982056e-05,
+              "max_chamfer_um": 0.0029640932625635925
+            },
+            "reasons": []
+          },
+          {
+            "run_id": "r022",
+            "exit_code": 0,
+            "metrics": {
+              "n": 1,
+              "chamfer_mean_um": 0.000345072644658022,
+              "depth_mae_um": 4.3056483982853444e-05,
+              "max_chamfer_um": 0.000345072644658022
+            },
+            "reasons": []
+          },
+          {
+            "run_id": "r023",
+            "exit_code": 0,
+            "metrics": {
+              "n": 1,
+              "chamfer_mean_um": 0.0002344694485088892,
+              "depth_mae_um": 9.906710438519623e-05,
+              "max_chamfer_um": 0.0002344694485088892
+            },
+            "reasons": []
+          }
+        ]
+      },
+      "nearest": {
+        "metrics": {
+          "n": 4,
+          "chamfer_mean_um": 0.0029440317139203314,
+          "depth_mae_um": 0.0036426896734595687,
+          "max_chamfer_um": 0.0038550337020117017
+        },
+        "cases": [
+          {
+            "run_id": "r020",
+            "exit_code": 0,
+            "metrics": {
+              "n": 1,
+              "chamfer_mean_um": 0.0033052623120898655,
+              "depth_mae_um": 0.00396647354119186,
+              "max_chamfer_um": 0.0033052623120898655
+            },
+            "reasons": []
+          },
+          {
+            "run_id": "r021",
+            "exit_code": 0,
+            "metrics": {
+              "n": 1,
+              "chamfer_mean_um": 0.0038550337020117017,
+              "depth_mae_um": 0.004936942004675378,
+              "max_chamfer_um": 0.0038550337020117017
+            },
+            "reasons": []
+          },
+          {
+            "run_id": "r022",
+            "exit_code": 0,
+            "metrics": {
+              "n": 1,
+              "chamfer_mean_um": 0.0009859298121838566,
+              "depth_mae_um": 0.0011865713814526863,
+              "max_chamfer_um": 0.0009859298121838566
+            },
+            "reasons": []
+          },
+          {
+            "run_id": "r023",
+            "exit_code": 0,
+            "metrics": {
+              "n": 1,
+              "chamfer_mean_um": 0.0036299010293959024,
+              "depth_mae_um": 0.00448077176651835,
+              "max_chamfer_um": 0.0036299010293959024
+            },
+            "reasons": []
+          }
+        ]
+      }
+    },
+    "wall_seconds": 595.360265,
+    "model_artifact_sha256": "5979a37e1eaaaf16ee3e6e76faa0d32609a87ff7142477a87344af2f574994a6",
+    "model_artifact_verified_in_study": true,
+    "promotion_authorized": false,
+    "numerical_convergence_certified": false
+  },
+  "selection": {
+    "selection_split": "val",
+    "candidates": [
+      {
+        "alpha": 0.0001,
+        "artifact": "reports/generated/local-study-001/models/ridge-0.0001.json",
+        "metrics": {
+          "n": 4,
+          "chamfer_mean_um": 0.0011406887663407185,
+          "depth_mae_um": 1.3436278806778362e-05,
+          "max_chamfer_um": 0.0030612326666808166
+        }
+      },
+      {
+        "alpha": 0.01,
+        "artifact": "reports/generated/local-study-001/models/ridge-0.01.json",
+        "metrics": {
+          "n": 4,
+          "chamfer_mean_um": 0.0011413908534909868,
+          "depth_mae_um": 2.079418342094963e-05,
+          "max_chamfer_um": 0.0030645975385086193
+        }
+      },
+      {
+        "alpha": 1.0,
+        "artifact": "reports/generated/local-study-001/models/ridge-1.0.json",
+        "metrics": {
+          "n": 4,
+          "chamfer_mean_um": 0.0013896918590463,
+          "depth_mae_um": 0.0006427977961477611,
+          "max_chamfer_um": 0.003733439787705302
+        }
+      }
+    ],
+    "chosen": {
+      "alpha": 0.0001,
+      "artifact": "reports/generated/local-study-001/models/ridge-0.0001.json",
+      "metrics": {
+        "n": 4,
+        "chamfer_mean_um": 0.0011406887663407185,
+        "depth_mae_um": 1.3436278806778362e-05,
+        "max_chamfer_um": 0.0030612326666808166
+      }
+    },
+    "test_accessed_for_selection": false
+  },
+  "plan": {
+    "scope": "local_two_variable_exploratory_study_not_production_acceptance",
+    "design_seed": 20261028,
+    "n_recipes": 24,
+    "split_sizes": {
+      "train": 16,
+      "val": 4,
+      "test": 4
+    },
+    "variable_ranges": {
+      "ion_flux": [
+        8.0,
+        12.0
+      ],
+      "ion_mean_energy": [
+        80.0,
+        120.0
+      ]
+    },
+    "fixed_recipe": {
+      "etchant_flux": 4500.0,
+      "oxygen_flux": 800.0,
+      "ion_exponent": 500.0,
+      "mask_width": 0.5,
+      "mask_height": 0.3
+    },
+    "numerical_profiles": [
+      {
+        "name": "coarse",
+        "grid_delta_um": 0.05,
+        "rays": 100
+      },
+      {
+        "name": "medium",
+        "grid_delta_um": 0.025,
+        "rays": 300
+      },
+      {
+        "name": "fine",
+        "grid_delta_um": 0.0125,
+        "rays": 600
+      }
+    ],
+    "pilot_anchors": [
+      [
+        8.0,
+        80.0
+      ],
+      [
+        10.0,
+        100.0
+      ],
+      [
+        12.0,
+        120.0
+      ]
+    ],
+    "pilot_acceptance": {
+      "medium_vs_fine_chamfer_um_max": 0.01,
+      "medium_vs_fine_depth_um_max": 0.01
+    },
+    "simulation": {
+      "duration_seconds": 1.0,
+      "threads": 2,
+      "seed": 42,
+      "x_extent_um": 2.0,
+      "coverage_tolerance": 0.001,
+      "coverage_max_iterations": 100
+    },
+    "profile_points": 64,
+    "ridge_alphas": [
+      0.0001,
+      0.01,
+      1.0
+    ],
+    "evaluation_policy": {
+      "max_chamfer_um": 0.01,
+      "max_depth_mae_um": 0.01,
+      "max_chamfer_per_snapshot_um": 0.02,
+      "evaluation_times_seconds": [
+        1.0
+      ]
+    }
+  },
+  "verification": {
+    "status": "VERIFIED",
+    "verified_cases": 33,
+    "refit_performed": false,
+    "model_sha256": "5979a37e1eaaaf16ee3e6e76faa0d32609a87ff7142477a87344af2f574994a6",
+    "metric_differences": {
+      "n": 0,
+      "chamfer_mean_um": 0.0,
+      "depth_mae_um": 0.0,
+      "max_chamfer_um": 0.0
+    },
+    "study_fingerprint": "98a251d227aad95c6662a93d71c931a65f120a849eef53537572acb03724d8b5",
+    "note": "post-run verification of preserved artifacts; original controller ended without final manifest"
+  },
+  "test_outside_training_coordinate_ranges": {
+    "r020": {},
+    "r021": {
+      "ion_flux": 11.577298159507718
+    },
+    "r022": {},
+    "r023": {
+      "ion_mean_energy": 118.88153945237559
+    }
+  },
+  "relative_chamfer_reduction_percent": 60.323180370667195,
+  "dataset_case_total_wall_seconds": {
+    "median": 24.884067968500062,
+    "min": 5.623264589999998,
+    "max": 40.071017412
+  },
+  "simulator_and_save_section_wall_seconds": {
+    "median": 1.5540498949999915
+  },
+  "linux_tests": {
+    "total": 82,
+    "passed": 82,
+    "skipped": 0
+  },
+  "controller_exit_code": 1,
+  "final_manifest_completed_separately": true
+}

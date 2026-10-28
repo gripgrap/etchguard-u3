@@ -95,3 +95,13 @@ class PredictionBundleTests(unittest.TestCase):
     def test_metric_overflow_is_blocked(self):
         self.prediction['snapshots'][1]['points_um'] = [[1e308,1e308],[-1e308,-1e308]]
         self.assertEqual(self.evaluate()['exit_code'], 1)
+
+    def test_final_only_evaluation_excludes_initial_input(self):
+        self.policy['evaluation_times_seconds'] = [1]
+        result = self.evaluate()
+        self.assertEqual(result['metrics']['n'], 1)
+        self.assertEqual(result['evaluated_times_seconds'], [1])
+
+    def test_requested_evaluation_time_must_exist(self):
+        self.policy['evaluation_times_seconds'] = [2]
+        self.assertEqual(self.evaluate()['exit_code'], 2)

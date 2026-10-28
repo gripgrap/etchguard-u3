@@ -1,5 +1,14 @@
 # 개인 개발 진행 기록
 
+## 2026-10-28 국소 수치 비교·학습·최종 평가
+
+- 9개 테스트 먼저 작성 후 미구현 import 실패 → arc resampling/split guard/ridge 구현 통과. 저장 모델의 손상 검사 추가 후 실패를 확인하고 보강했다.
+- 평가 시각 선택 테스트 2개 실패 확인 → evaluation_times_seconds 구현. Linux 전체 82개 통과.
+- local-study.json 계획 고정 후 pilot 9회+dataset 24회 실제 생성. medium/fine Chamfer .003235~.003544um, 깊이 차이 최대 .000496um.
+- train16/val4/test4, train-only scaler, validation으로 alpha=.0001 선택. test Chamfer ridge .00116810um vs nearest .00294403um. 두 모델 모두 탐색 정책 4/4 PASS, 승격 없음.
+- 원 상위 명령 비정상 종료·마지막 manifest 누락. 생성·선택·판정 파일 보존 후 33개 raw/request/모델/training digest를 검증하고 refit 없는 replay에서 모든 metric 차이 0 확인. 별도 봉인 지문은 reports/evidence 기록에 포함.
+- test 2개에 train 축별 범위 밖 조건이 있으며, model 오차가 simulator 수치 설정 차이보다 작아 물리 정밀도로 해석하지 않는다. 상세 STATUS_20261028.md.
+
 ## 2026-10-28 실제 시뮬레이션과 예측 파일 평가
 
 - 먼저 prediction bundle 10개 실패/성공 테스트 작성 → import 실패 → 구현 후 통과. 이후 시점별 최대 오차·부가 metadata·수치 overflow 차단을 추가.

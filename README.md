@@ -1,6 +1,6 @@
 # EtchGuard
 
-> 2026-10-28 업데이트: **WSL에서 실제 ViennaPS를 실행해 생성→VTP 검사→예측 파일 평가를 연결**했습니다. Linux 선택 의존성 환경에서 **70개 테스트 모두 통과**했습니다. [실행 결과·한계](docs/VIENNAPS_SMOKE.md), [예측 파일 계약](docs/PREDICTION_BUNDLE.md). 실제 학습 모델의 일반화 정확도는 아직 검증하지 않았습니다.
+> 2026-10-28 업데이트: 실제 ViennaPS 데이터 **24 recipe를 16/4/4로 분리해 소형 ridge 모델을 학습·평가**했습니다. test 4개에서 평균 Chamfer .001168um(최근접 baseline .002944um)을 확인했습니다. **2변수·1초의 국소 실험**이며 전역 일반화·공정 승인은 아닙니다. [현황 보고](docs/STATUS_20261028.md), [실험 설계·한계](docs/LOCAL_STUDY.md). Linux 선택 의존성 환경 82개 테스트 통과.
 
 **식각 AI 데이터·모델 검증 및 승인 자동화 | U3 개인 개발 프로젝트**  
 *Evidence-first quality gate for semiconductor etch surrogate models*
@@ -37,7 +37,7 @@ ViennaPS / 외부 데이터 / 팀원 모델                 [현재 구현: synt
 | PASS / BLOCK(성능·무결성), champion 보존 | **구현·로컬 검증** | 예시용 게이트 임계값. 실제 제조 승인 아님 |
 | HTML 요약 및 JSON 이력 | **구현·로컬 검증** | 브라우저로 결과 열람, 상호작용형 생산 대시보드 아님 |
 | 실제 ViennaPS 4.5.0 + ViennaLS 5.8.5 연동 | **CPU 소규모 실행 확인** | WSL에서 1 recipe/3 snapshots 생성·재료별 읽기·평가 연결. 수렴성·물리적 타당성은 미검증 |
-| 실제 FNO/MGN/MLP 모델 성능·골든셋 | **미검증** | 팀원 보고 수치를 본인 실행 결과로 표기 금지 |
+| 실제 생성 데이터의 학습 모델 | **국소 ridge 비교 확인** | 2변수/1초/test 4개. FNO/MGN/MLP·전역 golden/OOD는 미검증 |
 | drift → retrain → promote/rollback, 배포 | **미구현** | 독립 평가·모델 체크포인트·CI 연동이 선행돼야 함 |
 
 ## 시작하기

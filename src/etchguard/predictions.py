@@ -48,6 +48,12 @@ def evaluate_prediction_bundle(directory, expected_fingerprint):
         a, b = reference['snapshots'], prediction['snapshots']
         if len(a) != len(b) or any(x['t_seconds'] != y['t_seconds'] for x,y in zip(a,b)):
             raise ValueError('snapshot times/count mismatch')
+        requested = policy.get('evaluation_times_seconds', [s['t_seconds'] for s in a])
+        if (not isinstance(requested, list) or not requested
+                or any(type(t) not in (int,float) or not math.isfinite(t) or t < 0 for t in requested)
+                or len(set(requested)) != len(requested)
+                or not set(requested).issubset({s['t_seconds'] for s in a})):
+            raise ValueError('requested evaluation times must be unique and present in reference')
         result.update(model={k: model[k] for k in ('id','kind','artifact_sha256')}, reference_source_type=reference['provenance']['source_type'],
                       time_basis=reference['provenance']['time_basis'],
                       files_sha256={k: hashlib.sha256(v).hexdigest() for k,v in captured.items()})
@@ -55,13 +61,15 @@ def evaluate_prediction_bundle(directory, expected_fingerprint):
         problems = validate_run(prediction)
         if problems:
             raise ValueError(f'invalid prediction: {problems}')
-        pairs = [(y['points_um'],x['points_um']) for x,y in zip(a,b)]
+        selected = [(x,y) for x,y in zip(a,b) if x['t_seconds'] in requested]
+        pairs = [(y['points_um'],x['points_um']) for x,y in selected]
+        result['evaluated_times_seconds'] = [x['t_seconds'] for x,y in selected]
         metrics = score_pairs(pairs)
         if not all(math.isfinite(v) for v in metrics.values()):
             raise ValueError('nonfinite evaluation metric')
         result['metrics'] = metrics
         result['per_snapshot'] = [dict(t_seconds=x['t_seconds'], **score_pairs([pair]))
-                                  for x,pair in zip(a,pairs)]
+                                  for (x,y),pair in zip(selected,pairs)]
         if metrics['chamfer_mean_um'] > policy['max_chamfer_um']:
             result['reasons'].append('mean Chamfer exceeds policy')
         if metrics['depth_mae_um'] > policy['max_depth_mae_um']:

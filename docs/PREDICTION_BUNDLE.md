@@ -28,6 +28,8 @@ kind는 model/baseline/oracle/fault_injection 중 하나다. artifact_sha256은 
 
 policy는 max_chamfer_um, max_depth_mae_um, max_chamfer_per_snapshot_um을 유한한 음이 아닌 숫자로 요구한다. 예제 기준값은 검사 경로 시험용이며 실제 공정 합격 기준이 아니다.
 
+evaluation_times_seconds를 선택적으로 지정하면 그 시각만 점수에 포함한다. 비어 있거나 중복·누락 시각이면 BLOCK(2)이다. 생략하면 모든 snapshot을 평가한다. 학습 모델의 최종 단면 비교에서는 [1.0]을 사용해 정답 초기 입력이 평균 오차를 낮추지 않도록 한다.
+
 ## 실행
 
 검토한 bundle을 freeze한 후 그 fingerprint를 bundle 밖의 신뢰하는 기록에 보관한다.

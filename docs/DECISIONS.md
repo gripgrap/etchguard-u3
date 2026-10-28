@@ -1,5 +1,13 @@
 # 설계 결정 기록 (ADR-lite)
 
+## D-011 독립 recipe의 국소 학습 실험 — 2026-10-28
+
+- 2변수/24 recipe/16·4·4 split 계획과 수치 진행 기준을 결과 전에 고정. test는 alpha 선택에 사용하지 않았다.
+- 한 process로 1초 계산, 균등 호 길이 64점의 최종 형상을 quadratic ridge로 근사한다. FNO/MGN이나 7변수 전역 모델로 소개하지 않는다.
+- prediction policy에 평가 시각 목록을 추가해 초기 입력을 점수에서 제외한다.
+- 원 실행의 마지막 봉인 누락은 사후 원본·모델 재검사와 refit 없는 replay로 보완. 이후 드라이버 소스 사본과 외부 완료 marker를 추가한다.
+- [설계·결과·제한](LOCAL_STUDY.md), [현황 보고](STATUS_20261028.md).
+
 ## D-010 실제 simulator→예측 파일 평가 연결 — 2026-10-28
 
 - Windows wheel DLL import 실패 후 시스템 DLL 변경 대신 별도 WSL 환경에서 ViennaPS 4.5.0/ViennaLS 5.8.5를 실행했다.
