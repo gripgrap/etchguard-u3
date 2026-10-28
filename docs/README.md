@@ -5,7 +5,7 @@
 
 ## 문서 분류
 
-현재 진행 상태: [현황 보고](STATUS_20261028.md) · [소형 모델 실험](LOCAL_STUDY.md).
+현재 진행 상태: [현황 보고](STATUS_20261028.md) · [소형 모델 실험](LOCAL_STUDY.md) · [팀 모델 재확인·축소 E2E](TEAM_MODEL_READINESS.md).
 
 최신 실증: [ViennaPS 직접 실행](VIENNAPS_SMOKE.md) · [예측 파일 평가 계약](PREDICTION_BUNDLE.md).
 

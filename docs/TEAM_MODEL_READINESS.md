@@ -36,4 +36,10 @@ GitHub 연결 도구로 재조회한 전체 tree는 truncated=false였다. 한�
 4. 별도로 작은 새 계획으로 생성→학습→평가→최종 manifest/완료 marker의 정상 종료를 확인한다. 이전 33회 실행의 사후 봉인 성공을 이 새 정상 종료 증거로 대체하지 않는다. 이 실행은 orchestration 확인이며 새로운 성능 주장에 쓰지 않는다.
 5. 자료가 확보되면 MLP/FNO 등 팀 checkpoint를 연결한다. 팀 artifact를 확보하지 못하면 그 사실을 유지하고 자체 모델로 검증 경로를 진행한다. FNO 자체 학습은 필수 선행 조건이 아니다.
 
-현재 운영 E2E와 위 3~4번은 계획이다. 완료로 기록하지 않는다. [앞선 실제 실험 상태](STATUS_20261028.md), [예측 파일 평가 경계](PREDICTION_BUNDLE.md)를 함께 읽는다.
+## 축소 E2E 정상 종료 재실행
+
+위 4번을 별도 계획으로 실행했다. pilot 9회 + dataset 6회, train/val/test=4/1/1이다. WSL에서 `examples/local_surrogate_study.py --plan ../context/controller-smoke-plan.json --output reports/generated/controller-smoke-001`을 실행해 약 478초에 종료 코드 0을 확인했다. 실제 생성→변환→분리→학습→선택→저장 모델 추론→예측 파일 판정→통합 봉인→외부 완료 marker까지 정상 종료했다.
+
+현재 verify()로 통합 지문과 marker 일치를 확인하고 15개 raw의 원래 manifest도 재검사했다. [작은 실행 증거](../reports/evidence/controller-smoke-20261028.json)에 기록했다. 이는 완료 처리의 실증이며 새 정확도 주장이나 기존 24 recipe 실험의 정상 종료 증거가 아니다. 작은 계획과 raw/model은 generated/context에 유지한다.
+
+현재 운영 E2E와 위 3번은 계획이다. registry 등록·API 추론·drift 재학습까지 완료했다고 기록하지 않는다. [앞선 실제 실험 상태](STATUS_20261028.md), [예측 파일 평가 경계](PREDICTION_BUNDLE.md)를 함께 읽는다.

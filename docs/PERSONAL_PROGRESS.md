@@ -1,5 +1,12 @@
 # 개인 개발 진행 기록
 
+## 2026-10-28 팀 모델 재확인과 정상 종료 재실행
+
+- GitHub 전체 tree를 다시 확인. 한진주 e6b20fe에 MLP/FNO 코드와 저장 예측이 있지만 해당 tree에서 checkpoint·NPZ를 찾지 못함. 장민서 연결은 404. 별도 artifact의 부재까지 단정하지 않음.
+- 팀 저장 예측(15초, 64점, 정답 없음)을 context에 보관하고 validate_profile 검사 오류 0 확인. 성능 평가·checkpoint 직접 실행은 하지 않음. 자체 1초 데이터와 비교하지 않음.
+- FNO를 필수로 정하지 않고 재현 자료·계약·독립 평가 기준으로 MLP/FNO/기존 ridge 연결 순서를 결정. TEAM_MODEL_READINESS.md에 근거·미완료 기록. 노션 변경 없음.
+- 별도 controller-smoke 계획: pilot9+dataset6, split4/1/1. 실제 생성→학습→선택→평가→최종 봉인·완료 marker까지 약478초, 상위 명령 exit0. 15개 raw manifest와 root 지문/marker 일치 확인. 증거 reports/evidence/controller-smoke-20261028.json. 운영 registry/API는 여전히 미연결이며 새 성능 주장은 하지 않음.
+
 ## 2026-10-28 국소 수치 비교·학습·최종 평가
 
 - 9개 테스트 먼저 작성 후 미구현 import 실패 → arc resampling/split guard/ridge 구현 통과. 저장 모델의 손상 검사 추가 후 실패를 확인하고 보강했다.

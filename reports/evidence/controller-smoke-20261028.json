@@ -1,0 +1,17 @@
+{
+  "scope": "controller_completion_smoke_not_accuracy_claim",
+  "controller_exit_code": 0,
+  "verified_cases": 15,
+  "n_recipes": 6,
+  "split_sizes": {
+    "train": 4,
+    "val": 1,
+    "test": 1
+  },
+  "wall_seconds": 478.149626907,
+  "completion_marker_matches_verified_manifest": true,
+  "fingerprint": "8b5fa69d14326ecf7a586c4dec7975bbdf0bd85f12017975eb1de9dcc77e7edc",
+  "model_artifact_sha256": "c8322d5397987eff2596c96ab5714747f5871c310829cde54d5d53a49c5f3b6d",
+  "promotion_authorized": false,
+  "source_revision": "9f7c43f1d4fd3573800d4c8febb0dbc2f1370a41"
+}
