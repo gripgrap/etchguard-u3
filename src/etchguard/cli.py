@@ -12,6 +12,7 @@ from .integrity import freeze,verify,IntegrityError
 from .model import NearestRecipeBaseline
 from .registry import Registry
 from .report import write_html
+from .workflow import run_bundle
 
 
 class DegradedModel:
@@ -79,11 +80,20 @@ def main(argv=None):
     a=sub.add_parser("demo");a.add_argument("--output",default="reports/generated/demo")
     b=sub.add_parser("freeze");b.add_argument("directory")
     c=sub.add_parser("verify");c.add_argument("directory")
+    d=sub.add_parser("evaluate-bundle", help="verify and evaluate a fixed-time nearest-recipe baseline")
+    d.add_argument("directory")
+    d.add_argument("--expected-fingerprint", required=True)
+    d.add_argument("--registry", required=True)
+    d.add_argument("--model-id", required=True)
     ns=p.parse_args(argv)
     try:
         if ns.action=="demo":return _demo(Path(ns.output))
         if ns.action=="freeze":print(json.dumps(freeze(ns.directory),indent=2));return 0
         if ns.action=="verify":print(json.dumps(verify(ns.directory),indent=2));return 0
+        if ns.action=="evaluate-bundle":
+            result=run_bundle(ns.directory, ns.expected_fingerprint, Registry(ns.registry), ns.model_id)
+            print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+            return result['decision']['exit_code']
     except (OSError,ValueError,IntegrityError) as exc:
         print(f"ERROR: {exc}",file=sys.stderr)
         return 2

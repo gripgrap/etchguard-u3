@@ -15,17 +15,22 @@ class Registry:
         p=self.root/"current.json"
         return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
 
-    def submit(self, model_id: str, decision:GateDecision, *, fingerprint: str) -> dict:
+    def submit(self, model_id: str, decision:GateDecision, *, fingerprint: str, evidence: dict | None = None) -> dict:
         if not model_id or any(x in model_id for x in "/\\\n"):
             raise ValueError("invalid model id")
         current=self.champion()
         evt={"model_id":model_id,"passed":decision.passed,"exit_code":decision.exit_code,
              "reasons":decision.reasons,"metrics":decision.metrics,"fingerprint":fingerprint,
              "timestamp":datetime.now(timezone.utc).isoformat(),"previous_champion":current["model_id"] if current else None}
+        if evidence is not None:
+            evt['evidence'] = evidence
         with (self.root/"history.jsonl").open("a",encoding="utf-8") as f:
             f.write(json.dumps(evt,ensure_ascii=False,sort_keys=True)+"\n")
         if decision.passed:
             tmp=self.root/"current.tmp"
-            tmp.write_text(json.dumps({"model_id":model_id,"metrics":decision.metrics,"fingerprint":fingerprint},indent=2)+"\n",encoding="utf-8")
+            current_record = {"model_id":model_id,"metrics":decision.metrics,"fingerprint":fingerprint}
+            if evidence is not None:
+                current_record['evidence'] = evidence
+            tmp.write_text(json.dumps(current_record,indent=2)+"\n",encoding="utf-8")
             os.replace(tmp,self.root/"current.json")
         return evt

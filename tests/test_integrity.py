@@ -31,7 +31,12 @@ class IntegrityTests(unittest.TestCase):
         with self.assertRaises(IntegrityError):freeze(self.root)
     def test_deny_symlink(self):
         target=self.root/"run.json"
-        (self.root/"shortcut").symlink_to(target)
+        try:
+            (self.root/"shortcut").symlink_to(target)
+        except OSError as exc:
+            if getattr(exc, 'winerror', None) == 1314:
+                self.skipTest('Windows account cannot create symlinks; Linux CI exercises rejection')
+            raise
         with self.assertRaises(IntegrityError):freeze(self.root)
 
     def test_nested_manifest_named_file_is_not_ignored(self):
